@@ -35,7 +35,7 @@ boostrap --p projectPath --o outputFilePath --m filterModule --d filterPackageIn
 
 以下是执行`boostrap`命令后的返回
 
-![image-20221220162121319](/Users/liuhuiliang/Library/Application Support/typora-user-images/image-20221220162121319.png)
+![image-20221220162121319.png](https://upload-images.jianshu.io/upload_images/763512-c1505f8dcaecc800.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 可以看到在主工程中生成一个`MainModuleGenerator`文件。然后你只需要将这个`MainModuleGenerator`初始化即可。
 
@@ -65,7 +65,9 @@ class MultiLanguageLoopUpInit extends BaseModuleInit {
 
 ##### 原理分析
 
-![hello](/Users/liuhuiliang/Documents/MyGitHub/boostrap/hello.png)
+![hello.png](https://upload-images.jianshu.io/upload_images/763512-e90ff1b9d95a7a12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
 
 代码的实现思路，在`主项目`中获取到子项目的插件信息。并且分析插件内符合条件的类、在分析符合条件的类的时候，考虑到项目工程所有的代码转`ast`的时间非常耗时。所以需要过滤到一些无效的包信息。使用命令行就可以有效的过滤信息
 
@@ -74,30 +76,30 @@ class MultiLanguageLoopUpInit extends BaseModuleInit {
 ```dart
  var parser = ArgParser();
 
-  /// 需要扫描的主项目
-  parser.addOption(ArgsVal.project,
-      defaultsTo: Directory.current.path, abbr: 'p');
+/// 需要扫描的主项目
+parser.addOption(ArgsVal.project,
+defaultsTo: Directory.current.path, abbr: 'p');
 
-  /// 需要输出的文件夹
-  parser.addOption(ArgsVal.outputFile,
-      defaultsTo: Directory.current.path, abbr: 'o');
+/// 需要输出的文件夹
+parser.addOption(ArgsVal.outputFile,
+defaultsTo: Directory.current.path, abbr: 'o');
 
-  /// 需要扫描的模块信息
-  parser.addOption(ArgsVal.packages,
-      defaultsTo: ConsVal.targetModuleTag, abbr: 'm');
+/// 需要扫描的模块信息
+parser.addOption(ArgsVal.packages,
+defaultsTo: ConsVal.targetModuleTag, abbr: 'm');
 
-  /// 目标包信息
-  parser.addOption(ArgsVal.pack,
-      defaultsTo: ConsVal.targetPackageTag, abbr: 'd');
+/// 目标包信息
+parser.addOption(ArgsVal.pack,
+defaultsTo: ConsVal.targetPackageTag, abbr: 'd');
 
-  final result = parser.parse(arguments);
-  String argPath = result[ArgsVal.project];
-  String moduleTag = result[ArgsVal.packages];
-  String packageTag = result[ArgsVal.pack];
-  String outputFile =
-      path.join(result[ArgsVal.outputFile], ConsVal.outputFilePath);
+final result = parser.parse(arguments);
+String argPath = result[ArgsVal.project];
+String moduleTag = result[ArgsVal.packages];
+String packageTag = result[ArgsVal.pack];
+String outputFile =
+path.join(result[ArgsVal.outputFile], ConsVal.outputFilePath);
 
-  print('       ------------插件扫描解析开始------------    ');
+print('       ------------插件扫描解析开始------------    ');
 ```
 
 解析完命令行信息，需要将`dart`代码转化成`ast`从而可以得知复合条件的类。然后进行收集。
