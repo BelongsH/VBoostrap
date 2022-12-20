@@ -47,7 +47,7 @@
         <entry key="boostrap_base">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../boostrap_base/lib" />
+              <option value="$USER_HOME$/.pub-cache/git/VBoostrap-20bf72b7a822d094116ed50b8525473639c24c95/boostrap_base/lib" />
             </list>
           </value>
         </entry>
@@ -355,6 +355,7 @@
       </option>
     </properties>
     <CLASSES>
+      <root url="file://$USER_HOME$/.pub-cache/git/VBoostrap-20bf72b7a822d094116ed50b8525473639c24c95/boostrap_base/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/_fe_analyzer_shared-51.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/analyzer-5.3.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/analyzer_plugin-0.11.2/lib" />
@@ -404,7 +405,6 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/web_socket_channel-2.2.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/webkit_inspection_protocol-1.2.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/yaml-3.1.1/lib" />
-      <root url="file://$PROJECT_DIR$/../boostrap_base/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

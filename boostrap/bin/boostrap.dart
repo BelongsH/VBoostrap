@@ -9,10 +9,9 @@ import 'package:boostrap/vo/plugin_vo.dart';
 void main(List<String> arguments) {
   var parser = ArgParser();
 
-  final aa="/Users/liuhuiliang/Documents/Compand/vv_work_management";
   /// 需要扫描的主项目
   parser.addOption(ArgsVal.project,
-      defaultsTo: aa, abbr: 'p');
+      defaultsTo: Directory.current.path, abbr: 'p');
 
   /// 需要输出的文件夹
   parser.addOption(ArgsVal.outputFile,
