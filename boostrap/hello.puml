@@ -1,0 +1,80 @@
+@startuml
+set namespaceSeparator ::
+
+class "boostrap::generated::main_module_lifecycle.dart::MainModuleGenerator" {
+  +List<BaseModuleInit> collectModules()
+}
+
+"boostrap_base::src::module_generator.dart::ModuleGenerator" <|-- "boostrap::generated::main_module_lifecycle.dart::MainModuleGenerator"
+
+class "boostrap::vo::code_generator_vo.dart::CodeGeneratorVo" {
+  +String packageInfo
+  +String className
+  +String path
+}
+
+class "boostrap::vo::plugin_vo.dart::PluginVo" {
+  +String scannerProjectPath
+  +String outPutPath
+  +String hitModuleTag
+  +String hitPackageTag
+}
+
+class "boostrap::config::cons_val.dart::ConsVal" {
+  {static} +String coreLib
+  {static} +String dartFile
+  {static} +String targetModuleTag
+  {static} +String targetPackageTag
+  {static} +String targetSuperClassName
+  {static} +String pluginsTag
+  {static} +String outputFilePath
+}
+
+class "boostrap::config::cons_val.dart::ArgsVal" {
+  {static} +String project
+  {static} +String outputFile
+  {static} +String packages
+  {static} +String pack
+}
+
+class "boostrap::plugins::dart_file_manager.dart::DartFileManager" {
+  +List<String> totalFiles()
+}
+
+class "boostrap::plugins::plugins_analysis.dart::PluginsAnalysis" {
+  +List<String?> getPluginsPath()
+}
+
+class "boostrap::plugins::dart_core_analysis.dart::DartCoreAnalysis" {
+  -ModelVisitor _modelVisitor
+  +List<String> files
+  +void classVisitor()
+}
+
+"boostrap::plugins::dart_core_analysis.dart::DartCoreAnalysis" o-- "boostrap::visitor::model_visitor.dart::ModelVisitor"
+
+class "boostrap::visitor::model_visitor.dart::ModelVisitor" {
+  +List<CodeGeneratorVo> codeGenerators
+  +String targetValue
+  +dynamic visitConstructorElement()
+  +dynamic visitClassElement()
+}
+
+"analyzer::dart::element::visitor.dart::SimpleElementVisitor" <|-- "boostrap::visitor::model_visitor.dart::ModelVisitor"
+
+class "boostrap::module_core_executor.dart::ModuleCoreExecutor" {
+  +PluginVo extra
+  +PluginsAnalysis pluginsAnalysis
+  +DartFileManager dartFileManager
+  +DartCoreAnalysis dartCoreAnalysis
+  +void doExecute()
+  -List<String?> _filterModulePath()
+}
+
+"boostrap::module_core_executor.dart::ModuleCoreExecutor" o-- "boostrap::vo::plugin_vo.dart::PluginVo"
+"boostrap::module_core_executor.dart::ModuleCoreExecutor" o-- "boostrap::plugins::plugins_analysis.dart::PluginsAnalysis"
+"boostrap::module_core_executor.dart::ModuleCoreExecutor" o-- "boostrap::plugins::dart_file_manager.dart::DartFileManager"
+"boostrap::module_core_executor.dart::ModuleCoreExecutor" o-- "boostrap::plugins::dart_core_analysis.dart::DartCoreAnalysis"
+
+
+@enduml
