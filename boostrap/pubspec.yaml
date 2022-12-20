@@ -1,0 +1,26 @@
+name: boostrap
+executables:
+  boostrap:
+description: A sample command-line application.
+version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.18.5 <3.0.0'
+
+# dependencies:
+#   path: ^1.8.0
+
+dependencies:
+  collection: ^1.15.0
+  path: ^1.8.1
+  analyzer_plugin: ^0.11.2
+  analyzer: ^5.2.0
+  mustache_template: ^2.0.0
+  args: ^2.3.1
+  boostrap_base:
+    path: /Users/liuhuiliang/Documents/MyGitHub/boostrap_base
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.16.0
