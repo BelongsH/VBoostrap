@@ -46,9 +46,11 @@ packages:
   boostrap_base:
     dependency: "direct main"
     description:
-      path: "/Users/liuhuiliang/Documents/MyGitHub/boostrap_base"
-      relative: false
-    source: path
+      path: boostrap_base
+      ref: HEAD
+      resolved-ref: "20bf72b7a822d094116ed50b8525473639c24c95"
+      url: "https://github.com/BelongsH/VBoostrap.git"
+    source: git
     version: "1.0.0"
   collection:
     dependency: "direct main"
