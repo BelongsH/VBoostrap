@@ -19,7 +19,7 @@ dependencies:
   mustache_template: ^2.0.0
   args: ^2.3.1
   boostrap_base:
-    path: /Users/liuhuiliang/Documents/MyGitHub/boostrap_base
+    path: ../boostrap_base
 
 dev_dependencies:
   lints: ^2.0.0
