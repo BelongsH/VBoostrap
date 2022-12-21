@@ -24,15 +24,20 @@ class ModuleCoreExecutor {
           ? path.join(extra.scannerProjectPath, ConsVal.dartToolTag, element)
           : element;
 
-      final dd=dartFileManager.totalFiles(path.join(uri, ConsVal.coreLib)).where((e) =>
-      e.contains(extra.hitPackageTag) && e.endsWith(ConsVal.dartFile)).toList();
+      final dd = dartFileManager
+          .totalFiles(path.join(uri, ConsVal.coreLib))
+          .where((e) =>
+              e.contains(extra.hitPackageTag) && e.endsWith(ConsVal.dartFile))
+          .toList();
 
       hitFiles.addAll(
         dartFileManager.totalFiles(path.join(uri, ConsVal.coreLib)).where((e) =>
             e.contains(extra.hitPackageTag) && e.endsWith(ConsVal.dartFile)),
       );
     }
-    dartCoreAnalysis.classVisitor(hitFiles);
+    if (hitFiles.isNotEmpty) {
+      dartCoreAnalysis.classVisitor(hitFiles);
+    }
   }
 
   ///
@@ -46,8 +51,8 @@ class ModuleCoreExecutor {
       return [];
     } else {
       return plugins
-          .where((e) => e != null)
-          .where((e) => e!.contains(extra.hitModuleTag))
+          .where((e) => e.name?.contains(extra.hitModuleTag) ?? false)
+          .map((e) => e.filePath)
           .toList();
     }
   }
