@@ -7,6 +7,9 @@ class ConsVal {
 
   /// 模块的存放目录
   static String targetModuleTag = "packages";
+  static String packages = "packages";
+  static String rootUri = "rootUri";
+  static String file = "file://";
 
   /// 目标目录
   static String targetPackageTag = 'init';
@@ -14,8 +17,7 @@ class ConsVal {
   /// 目标类文件
   static String targetSuperClassName = "ModuleLifecycle";
 
-  /// 插件相关
-  static String pluginsTag=".flutter-plugins";
+  static String dartToolTag=".dart_tool/package_config.json";
 
   /// 输出文件信息
   static String outputFilePath = "lib/generated/main_module_lifecycle.dart";

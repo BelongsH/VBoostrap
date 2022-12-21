@@ -41,7 +41,9 @@ class ModuleCoreExecutor {
       return [];
     } else {
       return plugins
-          .where((e) => e?.contains(extra.hitModuleTag) ?? false)
+          .where((element) => element != null)
+          .where(
+              (element) => path.basename(element!).contains(extra.hitModuleTag))
           .toList();
     }
   }
