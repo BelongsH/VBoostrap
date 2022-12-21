@@ -1,3 +1,3 @@
 abstract class BaseModuleInit {
-  void init();
+  Future init();
 }
