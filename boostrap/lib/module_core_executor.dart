@@ -18,15 +18,20 @@ class ModuleCoreExecutor {
 
   void doExecute() async {
     List<String> hitFiles = [];
-    _filterModulePath().forEach((element) {
+    final paths = _filterModulePath();
+    for (String? element in paths) {
+      String uri = path.isRelative(element!)
+          ? path.join(extra.scannerProjectPath, ConsVal.dartToolTag, element)
+          : element;
+
+      final dd=dartFileManager.totalFiles(path.join(uri, ConsVal.coreLib)).where((e) =>
+      e.contains(extra.hitPackageTag) && e.endsWith(ConsVal.dartFile)).toList();
+
       hitFiles.addAll(
-        dartFileManager
-            .totalFiles(path.join(element ?? '', ConsVal.coreLib))
-            .where((element) =>
-                element.contains(extra.hitPackageTag) &&
-                element.endsWith(ConsVal.dartFile)),
+        dartFileManager.totalFiles(path.join(uri, ConsVal.coreLib)).where((e) =>
+            e.contains(extra.hitPackageTag) && e.endsWith(ConsVal.dartFile)),
       );
-    });
+    }
     dartCoreAnalysis.classVisitor(hitFiles);
   }
 
@@ -41,9 +46,8 @@ class ModuleCoreExecutor {
       return [];
     } else {
       return plugins
-          .where((element) => element != null)
-          .where(
-              (element) => path.basename(element!).contains(extra.hitModuleTag))
+          .where((e) => e != null)
+          .where((e) => e!.contains(extra.hitModuleTag))
           .toList();
     }
   }

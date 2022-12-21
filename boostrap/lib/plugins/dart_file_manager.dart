@@ -9,7 +9,7 @@ class DartFileManager {
     if (!rootDir.existsSync()) {
       return [];
     } else {
-      return rootDir.listSync(recursive: true).map((e) => e.path).toList();
+      return rootDir.listSync(recursive: true).map((e) => e.uri.path).toList();
     }
   }
 }
