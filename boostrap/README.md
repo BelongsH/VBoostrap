@@ -27,11 +27,11 @@ dart pub global activate --source git https://github.com/BelongsH/VBoostrap.git 
 boostrap --p projectPath --o outputFilePath --m filterModule --d filterPackageInfo
 ```
 
-我们的模块都是在`packages`包下，所以`--m filterModule`会加快代码的扫描，从而过滤一下官方、和其他一些第三方的插件信息。
+我们的模块都是在`module`包下，所以`--m filterModule`会加快代码的扫描，从而过滤一下官方、和其他一些第三方的插件信息。
 
 当然`--d filterPackageInfo` 也是属于这个作用，他会加快过滤收集需要初始化的文件信息。我们也是将需要初始化都放在`init`文件夹中。
 
-以上你都不进行配置的时候。默认`filterModule` 就是`packages` ，`filterPackageInfo`就是`init`，你只需要遵循约定大于配置的道理。将需要初始化的类放在`init`文件夹，模块信息放在`packages`下即可。
+以上你都不进行配置的时候。默认`filterModule` 就是`packages` ，`filterPackageInfo`就是`init`，你只需要遵循约定大于配置的道理。将需要初始化的类放在`init`文件夹，模块信息放在`module`下即可。
 
 以下是执行`boostrap`命令后的返回
 
