@@ -11,8 +11,8 @@ void main(List<String> arguments) {
 
   /// 需要扫描的主项目
   parser.addOption(ArgsVal.project,
-      // defaultsTo: Directory.current.path, abbr: 'p');
-      defaultsTo: "/Users/liuhuiliang/Documents/yicunhui/compoent/flutter_webview/example", abbr: 'p');
+      defaultsTo: Directory.current.path, abbr: 'p');
+      // defaultsTo: "/Users/liuhuiliang/Documents/yicunhui/compoent/flutter_webview/example", abbr: 'p');
 
   /// 需要输出的文件夹
   parser.addOption(ArgsVal.outputFile,
