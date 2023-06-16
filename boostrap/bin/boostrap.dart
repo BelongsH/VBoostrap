@@ -20,8 +20,8 @@ void main(List<String> arguments) {
 
   /// 需要扫描的模块信息
   parser.addOption(ArgsVal.packages,
-      // defaultsTo: ConsVal.targetModuleTag, abbr: 'm');
-      defaultsTo: 'component', abbr: 'm');
+      defaultsTo: ConsVal.targetModuleTag, abbr: 'm');
+      // defaultsTo: 'component', abbr: 'm');
 
   /// 目标包信息
   parser.addOption(ArgsVal.pack,
