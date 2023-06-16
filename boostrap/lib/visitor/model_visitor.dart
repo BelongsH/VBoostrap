@@ -10,12 +10,15 @@ class ModelVisitor extends SimpleElementVisitor {
 
   late String targetValue = (BaseModuleInit).toString();
 
+  static const methodName = "init";
+
   @override
   visitConstructorElement(ConstructorElement element) {}
 
   @override
   visitClassElement(ClassElement element) {
-    if (element.supertype != null && element.isType(targetValue)) {
+    if (element.supertype != null && (element.isType(targetValue)) ||
+        (element.methods.map((e) => e.name).contains(methodName))) {
       final packageName = element.location?.components.firstOrNull;
       if (packageName != null && packageName.isNotEmpty) {
         final path = element.enclosingElement.source.fullName;
